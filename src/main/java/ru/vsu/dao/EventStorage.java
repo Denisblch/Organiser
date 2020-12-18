@@ -5,10 +5,7 @@ import ru.vsu.domain.Type;
 import ru.vsu.events.Birthday;
 import ru.vsu.events.Meeting;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class EventStorage implements Storage<Event> {
@@ -46,15 +43,10 @@ public class EventStorage implements Storage<Event> {
     }
 
     private void init() {
-        try {
-            Date date = new SimpleDateFormat("dd.MM.yyyy").parse("28.12.2016");
-            Birthday birthday = new Birthday(date, "19:00", "BMW","Описание...");
-            Meeting meeting = new Meeting(date, "Василий","13:25","Описание...");
-            events.add(birthday);
-            events.add(meeting);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        Birthday birthday = new Birthday("28.12.2016", "19:00", "BMW","Описание...");
+        Meeting meeting = new Meeting("28.12.2016", "Василий","13:25","Описание...");
+        events.add(birthday);
+        events.add(meeting);
     }
 
     public List<Event> getBirthday() {
@@ -76,7 +68,12 @@ public class EventStorage implements Storage<Event> {
     }
 
     @Override
-    public void deleteEvent(Event targetEvent) {
-        events.remove(targetEvent);
+    public void deleteEvent(int index) {
+        events.remove(index);
+    }
+
+    @Override
+    public void editEvent(int index, String var2, String var3) {
+
     }
 }

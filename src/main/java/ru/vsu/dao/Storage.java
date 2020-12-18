@@ -10,11 +10,9 @@ public interface Storage<T> {
 
     void addEvent(Event event);
 
-    List<Event> getBirthday();
+    void deleteEvent(int index);
 
-    List<Event> getMeeting();
-
-    void deleteEvent(Event event);
+    void editEvent(int index, String var1, String var2);
 
     List<T> getAll();
 }

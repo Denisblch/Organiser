@@ -2,7 +2,6 @@ package ru.vsu.view;
 
 import ru.vsu.service.EventService;
 
-import java.text.ParseException;
 import java.util.Scanner;
 
 public class MainView {
@@ -32,11 +31,7 @@ public class MainView {
                     eventView.showAll();
                     break;
                 case 2:
-                    try {
-                        eventView.doAddEvent();
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
+                    eventView.doAddEvent();
                     break;
                 case 3:
                     eventView.doDeleteEvent();

@@ -2,17 +2,15 @@ package ru.vsu.events;
 
 import ru.vsu.domain.Event;
 
-import java.util.Date;
-
 import static ru.vsu.domain.Type.MEETING;
 
 public class Meeting extends Event {
-    private Date date;
+    private String date;
     private String nameOfInterlocutor;
     private String startTime;
     private String description;
 
-    public Meeting(Date date, String nameOfInterlocutor, String startTime, String description) {
+    public Meeting(String date, String nameOfInterlocutor, String startTime, String description) {
         super(MEETING, "Встреча");
         this.date = date;
         this.nameOfInterlocutor = nameOfInterlocutor;
@@ -20,7 +18,7 @@ public class Meeting extends Event {
         this.description = description;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -36,7 +34,7 @@ public class Meeting extends Event {
         return description;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

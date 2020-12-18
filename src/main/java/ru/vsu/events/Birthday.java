@@ -2,17 +2,15 @@ package ru.vsu.events;
 
 import ru.vsu.domain.Event;
 
-import java.util.Date;
-
 import static ru.vsu.domain.Type.BIRTHDAY;
 
 public class Birthday extends Event {
-    private Date date;
+    private String date;
     private String hourOfBirth;
     private String gift;
     private String description;
 
-    public Birthday(Date date, String hourOfBirth, String gift, String description) {
+    public Birthday(String date, String hourOfBirth, String gift, String description) {
         super(BIRTHDAY, "День рождения");
         this.date = date;
         this.hourOfBirth = hourOfBirth;
@@ -20,7 +18,7 @@ public class Birthday extends Event {
         this.description = description;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -36,7 +34,7 @@ public class Birthday extends Event {
         return description;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
