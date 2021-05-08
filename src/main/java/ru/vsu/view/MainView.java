@@ -1,9 +1,11 @@
 package ru.vsu.view;
 
+import org.springframework.stereotype.Component;
 import ru.vsu.service.EventService;
 
 import java.util.Scanner;
 
+@Component
 public class MainView {
 
     private EventService eventService;

@@ -2,8 +2,8 @@ package ru.vsu.view;
 
 import ru.vsu.domain.Event;
 import ru.vsu.domain.Type;
-import ru.vsu.events.Birthday;
-import ru.vsu.events.Meeting;
+import ru.vsu.domain.Birthday;
+import ru.vsu.domain.Meeting;
 import ru.vsu.service.EventService;
 
 import java.util.List;
@@ -74,7 +74,8 @@ public class EventView {
         System.out.println("Выберите определенное событие: ");
         showAll();
         index = scanner.nextInt();
+        Event event = eventService.getTargetEvent(index);
         System.out.println("Установите новую Дату и Время для события: ");
-        eventService.editTargetEvent(index, scanner.next(), scanner.next());
+        eventService.editTargetEvent(event);
     }
 }

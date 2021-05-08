@@ -1,8 +1,20 @@
 package ru.vsu.domain;
 
+import javax.persistence.*;
+
+@MappedSuperclass
+//@Entity
+//@Table(name = "event", schema="public")
+//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Event {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column(name = "name")
     private String name;
+    @Transient
     private Type type;
 
     public Event() {
@@ -29,5 +41,13 @@ public abstract class Event {
     @Override
     public String toString() {
         return "name = " + name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

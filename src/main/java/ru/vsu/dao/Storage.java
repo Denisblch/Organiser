@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface Storage<T> {
 
-    Event getEvent(int index);
+    Event getEvent(int id);
 
     void addEvent(Event event);
 
-    void deleteEvent(int index);
+    void deleteEvent(int id);
 
-    void editEvent(int index, String var1, String var2);
+    void editEvent(Event event);
 
     List<T> getAll();
 }

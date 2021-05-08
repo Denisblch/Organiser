@@ -1,13 +1,21 @@
-package ru.vsu.events;
+package ru.vsu.domain;
 
-import ru.vsu.domain.Event;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import static ru.vsu.domain.Type.BIRTHDAY;
 
+@Entity
+@Table(name = "birthday")
 public class Birthday extends Event {
+    @Column(name = "date")
     private String date;
+    @Column(name = "hour_of_birth")
     private String hourOfBirth;
+    @Column(name = "gift")
     private String gift;
+    @Column(name = "description")
     private String description;
 
     public Birthday(String date, String hourOfBirth, String gift, String description) {
@@ -16,6 +24,10 @@ public class Birthday extends Event {
         this.hourOfBirth = hourOfBirth;
         this.gift = gift;
         this.description = description;
+    }
+
+    public Birthday() {
+
     }
 
     public String getDate() {

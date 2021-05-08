@@ -1,16 +1,20 @@
 package ru.vsu;
 
-import ru.vsu.dao.EventDBStorage;
-import ru.vsu.service.EventService;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import ru.vsu.config.EventSpringConfig;
 import ru.vsu.view.MainView;
-
-import java.sql.SQLException;
 
 public class Application {
 
-    public void run() throws SQLException {
-        EventService eventService = new EventService(new EventDBStorage());
-        MainView mainView = new MainView(eventService);
+    public void run() {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
+                EventSpringConfig.class
+        );
+
+        MainView mainView = context.getBean("mainView", MainView.class);
+
         mainView.show();
+
+        context.close();
     }
 }

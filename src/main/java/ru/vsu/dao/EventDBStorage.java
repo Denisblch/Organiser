@@ -1,19 +1,23 @@
 package ru.vsu.dao;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import ru.vsu.domain.Event;
-import ru.vsu.events.Birthday;
-import ru.vsu.events.Meeting;
+import ru.vsu.domain.Birthday;
+import ru.vsu.domain.Meeting;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class EventDBStorage implements Storage<Event> {
-    private Connection connection;
+    private final Connection connection;
 
-    public EventDBStorage() throws SQLException {
-        connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/db_event",
-                "root", "root");
+    public EventDBStorage(@Value("${eventDBStorage.url}") String url,
+                          @Value("${eventDBStorage.user}") String user,
+                          @Value("${eventDBStorage.password}") String password) throws SQLException {
+        connection = DriverManager.getConnection(url, user, password);
     }
 
     @Override
@@ -75,12 +79,12 @@ public class EventDBStorage implements Storage<Event> {
     }
 
     @Override
-    public void editEvent(int index, String date, String time) {
+    public void editEvent(Event event) {
         try {
             PreparedStatement ps = connection.prepareStatement("UPDATE event SET date = ?, gift_time = ? WHERE id_event = ?");
-            ps.setString(1, date);
-            ps.setString(2, time);
-            ps.setInt(3, index);
+            ps.setString(1, "new date");
+            ps.setString(2, "new time");
+            ps.setInt(3, event.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -134,9 +138,4 @@ public class EventDBStorage implements Storage<Event> {
         }
         return size;
     }
-
-    /*private String ResultSetMetaData(PreparedStatement ps) throws SQLException {
-        ResultSetMetaData resultSetMetaData = ps.getMetaData();
-        return resultSetMetaData.getTableName(1);
-    }*/
 }

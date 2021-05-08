@@ -2,8 +2,8 @@ package ru.vsu.dao;
 
 import ru.vsu.domain.Event;
 import ru.vsu.domain.Type;
-import ru.vsu.events.Birthday;
-import ru.vsu.events.Meeting;
+import ru.vsu.domain.Birthday;
+import ru.vsu.domain.Meeting;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +73,7 @@ public class EventStorage implements Storage<Event> {
     }
 
     @Override
-    public void editEvent(int index, String var2, String var3) {
+    public void editEvent(Event event) {
 
     }
 }
